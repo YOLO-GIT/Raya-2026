@@ -3,5 +3,8 @@
     "@tailwindcss/cli": "^4.2.1",
     "nes.css": "^2.3.0",
     "tailwindcss": "^4.2.1"
+  },
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   }
 }
