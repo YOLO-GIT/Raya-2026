@@ -17,19 +17,63 @@
 <body class="bg-black text-white h-screen flex items-center justify-center">
 
     <div class="stars"></div>
+    <div id="flash" class="flash"></div>
 
-    <div class="text-center relative z-10">
+    <div id="startScreen" class="game-screen">
+
         <div class="text-6xl mb-6">🌙</div>
 
-        <h1 class="text-3xl mb-6">EID MUBARAK</h1>
+        <h1 class="text-3xl mb-6">
+            EID MUBARAK
+        </h1>
 
-        <p class="mb-8">Taqabbalallahu minna wa minkum</p>
+        <p>
+            Taqabbalallahu minna wa minkum
+        </p>
 
-        <button class="border-4 border-white px-6 py-3">
+        <button id="startBtn" class="start-text mt-10">
             PRESS START
         </button>
+
     </div>
 
+
+    <div id="eidScreen" class="game-screen hidden">
+
+        <h1 class="text-3xl mb-6">
+            ✨ EID MUBARAK ✨
+        </h1>
+
+        <p>
+            May your Eid be filled with happiness,
+            peace and blessings.
+        </p>
+
+    </div>
+
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const startScreen = document.getElementById("startScreen");
+        const eidScreen = document.getElementById("eidScreen");
+        const flash = document.getElementById("flash");
+
+        startBtn.addEventListener("click", () => {
+
+            startScreen.classList.add("fade-out");
+
+            flash.classList.add("flash-active");
+
+            setTimeout(() => {
+
+                startScreen.style.display = "none";
+
+                eidScreen.classList.remove("hidden");
+                eidScreen.classList.add("fade-in");
+
+            }, 500);
+
+        });
+    </script>
 </body>
 
 </html>
