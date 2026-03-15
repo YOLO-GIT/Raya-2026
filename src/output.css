@@ -1,5 +1,4 @@
 /*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */
-@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -167,20 +166,17 @@
   }
 }
 @layer utilities {
-  .relative {
-    position: relative;
-  }
-  .z-10 {
-    z-index: 10;
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
   }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
-  .mb-8 {
-    margin-bottom: calc(var(--spacing) * 8);
-  }
   .flex {
     display: flex;
+  }
+  .hidden {
+    display: none;
   }
   .h-screen {
     height: 100vh;
@@ -191,24 +187,8 @@
   .justify-center {
     justify-content: center;
   }
-  .border-4 {
-    border-style: var(--tw-border-style);
-    border-width: 4px;
-  }
-  .border-white {
-    border-color: var(--color-white);
-  }
   .bg-black {
     background-color: var(--color-black);
-  }
-  .px-6 {
-    padding-inline: calc(var(--spacing) * 6);
-  }
-  .py-3 {
-    padding-block: calc(var(--spacing) * 3);
-  }
-  .text-center {
-    text-align: center;
   }
   .text-3xl {
     font-size: var(--text-3xl);
@@ -222,6 +202,19 @@
     color: var(--color-white);
   }
 }
+@keyframes twinkle {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
 @layer components {
   .stars {
     position: fixed;
@@ -233,25 +226,51 @@
     background-size: 40px 40px;
     opacity: 0.6;
     animation: twinkle 2s infinite alternate;
+    pointer-events: none;
+    z-index: 0;
   }
-  @keyframes twinkle {
-    from {
-      opacity: 0.4;
+  .game-screen {
+    border: 6px solid white;
+    padding: 40px;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    z-index: 10;
+  }
+  .start-text {
+    animation: blink 1s steps(2, start) infinite;
+    cursor: pointer;
+  }
+  .fade-out {
+    opacity: 0;
+  }
+  .flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 50;
+  }
+  .flash-active {
+    animation: flash-screen 0.4s ease;
+  }
+  @keyframes flash-screen {
+    0% {
+      opacity: 0;
     }
-    to {
-      opacity: 0.9;
+    40% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
-@layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
-    }
+  .fade-in {
+    opacity: 1;
+    transition: opacity 1.2s ease;
   }
 }
