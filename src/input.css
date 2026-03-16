@@ -1,23 +1,7 @@
 @import "tailwindcss";
 
-/* Animations should live outside the layer */
-@keyframes twinkle {
-    from {
-        opacity: 0.4;
-    }
-
-    to {
-        opacity: 0.9;
-    }
-}
-
-@keyframes blink {
-    to {
-        visibility: hidden;
-    }
-}
-
 @layer components {
+    /* ⭐ STAR CONTAINER */
 
     .stars {
         position: fixed;
@@ -25,33 +9,132 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: radial-gradient(white 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.6;
-        animation: twinkle 2s infinite alternate;
         pointer-events: none;
         z-index: 0;
     }
+
+    /* small stars */
+
+    .stars-small {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background-image:
+            radial-gradient(white 1px, transparent 1px),
+            radial-gradient(white 1px, transparent 1px),
+            radial-gradient(white 1px, transparent 1px),
+            radial-gradient(white 1px, transparent 1px);
+
+        background-size:
+            70px 70px,
+            90px 90px,
+            120px 120px,
+            150px 150px;
+
+        background-position:
+            0 0,
+            40px 60px,
+            120px 30px,
+            200px 150px;
+
+        opacity: 0.7;
+        animation: twinkle 2s infinite alternate;
+    }
+
+    /* medium stars */
+
+    .stars-medium {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background-image: radial-gradient(#fde047 2px, transparent 2px);
+        background-size: 80px 80px;
+        opacity: 0.7;
+        animation: moveStars 120s linear infinite, twinkle 3s infinite alternate;
+    }
+
+    /* big stars */
+
+    .stars-big {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background-image: radial-gradient(#ffffff 3px, transparent 3px);
+        background-size: 140px 140px;
+        opacity: 0.9;
+        animation: moveStars 160s linear infinite, twinkle 4s infinite alternate;
+    }
+
+    /* star movement */
+
+    @keyframes moveStars {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translateY(-50%);
+        }
+    }
+
+    /* star twinkle */
+
+    @keyframes twinkle {
+        from {
+            opacity: 0.3;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* game screen */
 
     .game-screen {
         border: 6px solid white;
         padding: 40px;
         text-align: center;
+
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(2px);
+
         transition: opacity 0.5s ease;
         opacity: 1;
+
         z-index: 10;
+        position: relative;
     }
+
+    /* start text */
 
     .start-text {
         animation: blink 1s steps(2, start) infinite;
         cursor: pointer;
     }
 
+    /* blink animation */
+
+    @keyframes blink {
+        to {
+            visibility: hidden;
+        }
+    }
+
+    /* transitions */
+
     .fade-out {
         opacity: 0;
     }
 
+    .fade-in {
+        opacity: 1;
+        transition: opacity 1.2s ease;
+    }
+
     /* screen flash */
+
     .flash {
         position: fixed;
         top: 0;
@@ -64,12 +147,11 @@
         z-index: 50;
     }
 
-    /* flash animation */
     .flash-active {
-        animation: flash-screen 0.4s ease;
+        animation: flashScreen 0.4s ease;
     }
 
-    @keyframes flash-screen {
+    @keyframes flashScreen {
         0% {
             opacity: 0;
         }
@@ -83,10 +165,73 @@
         }
     }
 
-    /* smoother fade */
-    .fade-in {
-        opacity: 1;
-        transition: opacity 1.2s ease;
+    /* 3D pixel title */
+
+    .pixel-3d {
+        color: #fde047;
+        letter-spacing: 4px;
+
+        text-shadow:
+            2px 2px 0 #ca8a04,
+            4px 4px 0 #a16207,
+            6px 6px 0 #713f12,
+            8px 8px 0 #000;
     }
 
+    .corner-deco {
+        position: absolute;
+        font-size: 20px;
+        opacity: 0.8;
+    }
+
+    .top-left {
+        top: 10px;
+        left: 10px;
+    }
+
+    .top-right {
+        top: 10px;
+        right: 10px;
+    }
+
+    .bottom-left {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .bottom-right {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .pixel-divider {
+        margin: 20px 0;
+        letter-spacing: 4px;
+        color: #fde047;
+    }
+
+    .float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-8px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .blessing {
+        margin-top: 15px;
+        font-size: 12px;
+        line-height: 1.8;
+        opacity: 0.9;
+    }
 }

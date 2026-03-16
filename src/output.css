@@ -1,4 +1,5 @@
 /*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -11,8 +12,11 @@
     --spacing: 0.25rem;
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
-    --text-6xl: 3.75rem;
-    --text-6xl--line-height: 1;
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -166,6 +170,9 @@
   }
 }
 @layer utilities {
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
@@ -178,14 +185,30 @@
   .hidden {
     display: none;
   }
+  .table {
+    display: table;
+  }
   .h-screen {
     height: 100vh;
+  }
+  .border-collapse {
+    border-collapse: collapse;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .resize {
+    resize: both;
   }
   .items-center {
     align-items: center;
   }
   .justify-center {
     justify-content: center;
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
   }
   .bg-black {
     background-color: var(--color-black);
@@ -194,25 +217,32 @@
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
-  .text-6xl {
-    font-size: var(--text-6xl);
-    line-height: var(--tw-leading, var(--text-6xl--line-height));
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
   }
   .text-white {
     color: var(--color-white);
   }
-}
-@keyframes twinkle {
-  from {
-    opacity: 0.4;
+  .underline {
+    text-decoration-line: underline;
   }
-  to {
-    opacity: 0.9;
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
-}
-@keyframes blink {
-  to {
-    visibility: hidden;
+  .backdrop-filter {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
 }
 @layer components {
@@ -222,27 +252,79 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(white 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.6;
-    animation: twinkle 2s infinite alternate;
     pointer-events: none;
     z-index: 0;
+  }
+  .stars-small {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px);
+    background-size: 70px 70px, 90px 90px, 120px 120px, 150px 150px;
+    background-position: 0 0, 40px 60px, 120px 30px, 200px 150px;
+    opacity: 0.7;
+    animation: twinkle 2s infinite alternate;
+  }
+  .stars-medium {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(#fde047 2px, transparent 2px);
+    background-size: 80px 80px;
+    opacity: 0.7;
+    animation: moveStars 120s linear infinite, twinkle 3s infinite alternate;
+  }
+  .stars-big {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(#ffffff 3px, transparent 3px);
+    background-size: 140px 140px;
+    opacity: 0.9;
+    animation: moveStars 160s linear infinite, twinkle 4s infinite alternate;
+  }
+  @keyframes moveStars {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+  @keyframes twinkle {
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 1;
+    }
   }
   .game-screen {
     border: 6px solid white;
     padding: 40px;
     text-align: center;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
     transition: opacity 0.5s ease;
     opacity: 1;
     z-index: 10;
+    position: relative;
   }
   .start-text {
     animation: blink 1s steps(2, start) infinite;
     cursor: pointer;
   }
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
   .fade-out {
     opacity: 0;
+  }
+  .fade-in {
+    opacity: 1;
+    transition: opacity 1.2s ease;
   }
   .flash {
     position: fixed;
@@ -256,9 +338,9 @@
     z-index: 50;
   }
   .flash-active {
-    animation: flash-screen 0.4s ease;
+    animation: flashScreen 0.4s ease;
   }
-  @keyframes flash-screen {
+  @keyframes flashScreen {
     0% {
       opacity: 0;
     }
@@ -269,8 +351,148 @@
       opacity: 0;
     }
   }
-  .fade-in {
-    opacity: 1;
-    transition: opacity 1.2s ease;
+  .pixel-3d {
+    color: #fde047;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 0 #ca8a04, 4px 4px 0 #a16207, 6px 6px 0 #713f12, 8px 8px 0 #000;
+  }
+  .corner-deco {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.8;
+  }
+  .top-left {
+    top: 10px;
+    left: 10px;
+  }
+  .top-right {
+    top: 10px;
+    right: 10px;
+  }
+  .bottom-left {
+    bottom: 10px;
+    left: 10px;
+  }
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+  }
+  .pixel-divider {
+    margin: 20px 0;
+    letter-spacing: 4px;
+    color: #fde047;
+  }
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .blessing {
+    margin-top: 15px;
+    font-size: 12px;
+    line-height: 1.8;
+    opacity: 0.9;
+  }
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-border-style: solid;
+      --tw-outline-style: solid;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-ease: initial;
+    }
   }
 }
