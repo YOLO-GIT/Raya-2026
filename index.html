@@ -16,18 +16,30 @@
 
 <body class="bg-black text-white h-screen flex items-center justify-center">
 
-    <div class="stars"></div>
+    <div class="stars">
+        <div class="stars-small"></div>
+        <div class="stars-medium"></div>
+        <div class="stars-big"></div>
+    </div>
     <div id="flash" class="flash"></div>
 
     <div id="startScreen" class="game-screen">
 
-        <div class="text-6xl mb-6">🌙</div>
+        <div class="text-5xl float mb-6">🌙</div>
+        <div class="corner-deco top-left">🕌</div>
+        <div class="corner-deco top-right">🌙</div>
+        <div class="corner-deco bottom-left">🏮</div>
+        <div class="corner-deco bottom-right">⭐</div>
 
-        <h1 class="text-3xl mb-6">
+        <h1 class="text-3xl mb-6 pixel-3d">
             EID MUBARAK
         </h1>
 
-        <p>
+        <div class="pixel-divider">
+            ================
+        </div>
+
+        <p class="mt-6">
             Taqabbalallahu minna wa minkum
         </p>
 
@@ -70,7 +82,7 @@
                 eidScreen.classList.remove("hidden");
                 eidScreen.classList.add("fade-in");
 
-            }, 500);
+            }, 600);
 
         });
     </script>
