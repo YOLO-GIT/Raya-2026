@@ -574,4 +574,83 @@
     .particles span {
         box-shadow: 0 0 6px #fde047;
     }
+
+    .music-player {
+        position: fixed;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        display: flex;
+        flex-direction: row;
+        /* always row */
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        background: rgba(0, 0, 0, 0.6);
+        border: 3px solid white;
+
+        padding: 6px 10px;
+
+        font-size: 8px;
+        /* smaller so it fits mobile */
+        white-space: nowrap;
+        /* 🔥 prevent line break */
+
+        z-index: 20;
+
+        animation: fadeUp 1s ease;
+    }
+
+    /* slightly bigger on larger screens */
+    @media (min-width: 640px) {
+        .music-player {
+            font-size: 10px;
+            padding: 10px 20px;
+        }
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+
+    .music-player button {
+        margin-left: 10px;
+
+        border: none;
+        background: none;
+        color: white;
+
+        font-family: "Press Start 2P", cursive;
+        cursor: pointer;
+    }
+
+    /* hover effect */
+    .music-player button:hover {
+        background: white;
+        color: black;
+        text-shadow: 0 0 6px #fde047;
+        text-decoration: underline;
+    }
+
+    .corner-deco {
+        position: absolute;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    @media (min-width:640px) {
+        .corner-deco {
+            font-size: 20px;
+        }
+    }
 }
