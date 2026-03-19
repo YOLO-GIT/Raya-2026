@@ -1,10 +1,19 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kad Raya</title>
+    <link rel="icon" type="image/x-icon" href="example/Kirbo.png" />
+    <meta name="author" content="YOLO-GIT" />
+    <meta http-equiv="refresh" content="120" />
+    <!-- Add Open Graph tags for better social media sharing -->
+    <meta property="og:title" content="Kad Raya" />
+    <meta property="og:description" content="Raya 🌹🌹🌹" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="../example/Kirbo.png" />
     <link rel="stylesheet" href="./src/output.css" />
-
-
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 
     <style>
@@ -14,7 +23,7 @@
     </style>
 </head>
 
-<body class=" text-white h-screen flex items-center justify-center">
+<body class="text-white min-h-screen flex items-center justify-center px-4">
 
     <div class="particles">
         <span></span>
@@ -43,15 +52,15 @@
     <div class="lantern small left2">🏮</div>
     <div class="lantern small right2">🏮</div> -->
 
-    <div id="startScreen" class="game-screen">
+    <div id="startScreen" class="game-screen w-full max-w-md sm:max-w-lg md:max-w-xl">
 
-        <div class="text-5xl float mb-6">🌙</div>
-        <div class="corner-deco top-left">🕌</div>
-        <div class="corner-deco top-right">🌙</div>
-        <div class="corner-deco bottom-left">🏮</div>
-        <div class="corner-deco bottom-right">⭐</div>
+        <div class="text-3xl sm:text-4xl md:text-5xl float mb-6">🌙</div>
+        <div class="corner-deco top-left hidden sm:block">🕌</div>
+        <div class="corner-deco top-right hidden sm:block">🌙</div>
+        <div class="corner-deco bottom-left hidden sm:block">🏮</div>
+        <div class="corner-deco bottom-right hidden sm:block">⭐</div>
 
-        <h1 class="text-3xl mb-6 pixel-3d title-glow">
+        <h1 class="text-xl sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
             ✨ EID MUBARAK ✨
         </h1>
 
@@ -59,23 +68,22 @@
             ================
         </div>
 
-        <p class="mt-6">
+        <p class="mt-6 text-xs sm:text-sm">
             Taqabbalallahu minna wa minkum
         </p>
 
-        <button id="startBtn" class="pixel-btn mt-10">
+        <button id="startBtn" class="pixel-btn mt-10 text-xs sm:text-sm">
             <span class="start-text">PRESS START</span>
         </button>
 
     </div>
 
 
-    <div id="eidScreen" class="game-screen hidden">
+    <div id="eidScreen" class="game-screen hidden w-full max-w-md sm:max-w-lg md:max-w-xl">
 
 
         <h1 class="text-3xl mb-6">
             ✨ EID MUBARAK ✨
-
         </h1>
 
         <p>
@@ -84,6 +92,16 @@
         </p>
 
     </div>
+
+    <div class="music-player flex flex-wrap justify-center items-center gap-2 text-center">
+        <span class="hidden sm:inline">♪ Eid Theme</span>
+        <span class="sm:hidden">♪ Eid</span>
+        <button id="musicToggle">UNMUTE</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="./music/" type="audio/mpeg">
+    </audio>
 
     <script>
         const startBtn = document.getElementById("startBtn");
@@ -105,6 +123,25 @@
                 eidScreen.classList.add("fade-in");
 
             }, 600);
+
+        });
+
+        const music = document.getElementById("bgMusic");
+        const toggleBtn = document.getElementById("musicToggle");
+
+        let isPlaying = false;
+
+        toggleBtn.addEventListener("click", () => {
+
+            if (!isPlaying) {
+                music.play();
+                toggleBtn.textContent = "MUTE";
+                isPlaying = true;
+            } else {
+                music.pause();
+                toggleBtn.textContent = "UNMUTE";
+                isPlaying = false;
+            }
 
         });
     </script>
