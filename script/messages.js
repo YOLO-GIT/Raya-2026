@@ -14,26 +14,40 @@ const images = ["🌙", "🕌", "✨", "🌟", "🏮"];
 
 const messageEl = document.getElementById("eidMessage");
 const imageEl = document.getElementById("eidImage");
+const moneyEl = document.getElementById("moneyPacket");
 const rerollBtn = document.getElementById("rerollBtn");
 
 rerollBtn.addEventListener("click", () => {
-
+    // Reset animations
     messageEl.classList.remove("fade-change");
     imageEl.classList.remove("fade-change");
+    void messageEl.offsetWidth;
 
-    void messageEl.offsetWidth; // reset animation
+    // Decide if lucky
+    const lucky = Math.random() < 0.15; // 15% chance for money packet
 
-    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-    const randomImg = images[Math.floor(Math.random() * images.length)];
+    if (lucky) {
+        // Show money packet
+        moneyEl.style.display = "block";
+        messageEl.style.display = "none";
+        imageEl.style.display = "none";
+    } else {
+        // Show regular message + emoji
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        const randomImg = images[Math.floor(Math.random() * images.length)];
 
-    messageEl.textContent = randomMsg;
-    imageEl.textContent = randomImg;
+        messageEl.textContent = randomMsg;
+        imageEl.textContent = randomImg;
 
-    messageEl.classList.add("fade-change");
-    imageEl.classList.add("fade-change");
+        messageEl.style.display = "block";
+        imageEl.style.display = "block";
+        moneyEl.style.display = "none";
 
+        // Apply fade animation
+        messageEl.classList.add("fade-change");
+        imageEl.classList.add("fade-change");
+    }
 });
 
-if (Math.random() < 0.1) {
-    messageEl.textContent = "✨ SPECIAL EID BLESSING ✨";
-}
+// Optional: show a random message at start
+rerollBtn.click();
