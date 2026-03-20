@@ -7,7 +7,6 @@
     <title>Kad Raya</title>
     <link rel="icon" type="image/x-icon" href="example/Kirbo.png" />
     <meta name="author" content="YOLO-GIT" />
-    <meta http-equiv="refresh" content="120" />
     <!-- Add Open Graph tags for better social media sharing -->
     <meta property="og:title" content="Kad Raya" />
     <meta property="og:description" content="Raya 🌹🌹🌹" />
@@ -24,6 +23,19 @@
 </head>
 
 <body class="text-white min-h-screen flex items-center justify-center px-4">
+
+    <!-- Menu button -->
+    <button id="menuBtn" class="menu-btn">
+        ☰
+    </button>
+
+    <!-- Menu panel -->
+    <div id="menuPanel" class="menu-panel hidden">
+        <button id="homeBtn">🏠 HOME</button>
+        <button id="aboutBtn">ℹ️ ABOUT</button>
+    </div>
+
+
 
     <div class="particles">
         <span></span>
@@ -60,7 +72,7 @@
         <div class="corner-deco bottom-left hidden sm:block">🏮</div>
         <div class="corner-deco bottom-right hidden sm:block">⭐</div>
 
-        <h1 class="text-xl sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
+        <h1 class="text-md sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
             ✨ EID MUBARAK ✨
         </h1>
 
@@ -81,15 +93,43 @@
 
     <div id="eidScreen" class="game-screen hidden w-full max-w-md sm:max-w-lg md:max-w-xl">
 
-
-        <h1 class="text-3xl mb-6">
+        <h1 class="text-md sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
             ✨ EID MUBARAK ✨
         </h1>
 
-        <p>
+        <!-- Dynamic message -->
+        <p id="eidMessage" class="mt-4 text-xs sm:text-sm leading-relaxed">
             May your Eid be filled with happiness,
             peace and blessings.
         </p>
+
+        <!-- Optional image -->
+        <div id="eidImage" class="mt-6 text-4xl">
+            🌙
+        </div>
+
+        <!-- Reroll button -->
+        <button id="rerollBtn" class="pixel-btn mt-8 text-xs sm:text-sm">
+            REROLL
+        </button>
+
+    </div>
+
+    <!-- About Us -->
+
+    <div id="aboutScreen" class="game-screen hidden w-full max-w-md sm:max-w-lg md:max-w-xl">
+
+        <h1 class="text-xl mb-6 pixel-3d">ABOUT</h1>
+
+        <p class="text-xs sm:text-sm leading-relaxed">
+            This is a small Eid Mubarak interactive website 🎉<br><br>
+            Built with HTML, Tailwind CSS and a bit of JavaScript.<br><br>
+            May your Eid be filled with joy and blessings ✨
+        </p>
+
+        <button id="backBtn" class="pixel-btn mt-8 text-xs">
+            ← BACK
+        </button>
 
     </div>
 
@@ -100,51 +140,13 @@
     </div>
 
     <audio id="bgMusic" loop>
-        <source src="./music/" type="audio/mpeg">
+        <source src="./music/Suasana Di Hari Raya (Lofi).mp3" type="audio/mpeg">
     </audio>
 
-    <script>
-        const startBtn = document.getElementById("startBtn");
-        const startScreen = document.getElementById("startScreen");
-        const eidScreen = document.getElementById("eidScreen");
-        const flash = document.getElementById("flash");
-
-        startBtn.addEventListener("click", () => {
-
-            startScreen.classList.add("fade-out");
-
-            flash.classList.add("flash-active");
-
-            setTimeout(() => {
-
-                startScreen.style.display = "none";
-
-                eidScreen.classList.remove("hidden");
-                eidScreen.classList.add("fade-in");
-
-            }, 600);
-
-        });
-
-        const music = document.getElementById("bgMusic");
-        const toggleBtn = document.getElementById("musicToggle");
-
-        let isPlaying = false;
-
-        toggleBtn.addEventListener("click", () => {
-
-            if (!isPlaying) {
-                music.play();
-                toggleBtn.textContent = "MUTE";
-                isPlaying = true;
-            } else {
-                music.pause();
-                toggleBtn.textContent = "UNMUTE";
-                isPlaying = false;
-            }
-
-        });
-    </script>
+    <script src="./script/messages.js"></script>
+    <script src="./script/screen_setup.js"></script>
+    <script src="./script/music.js"></script>
+    <script src="./script/menu.js"></script>
 </body>
 
 </html>
