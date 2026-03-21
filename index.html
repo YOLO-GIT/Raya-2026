@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body class="text-white min-h-screen flex items-center justify-center px-4">
+<body class="text-white min-h-screen px-4 overflow-x-hidden">
 
     <!-- Menu button -->
     <button id="menuBtn" class="menu-btn">
@@ -62,76 +62,83 @@
     <div class="lantern small left2">🏮</div>
     <div class="lantern small right2">🏮</div> -->
 
-    <div id="startScreen" class="game-screen w-full max-w-none sm:max-w-lg md:max-w-xl">
+    <!-- WRAPPER -->
+    <div class="min-h-screen flex items-center justify-center">
 
-        <div class="text-3xl sm:text-4xl md:text-5xl float mb-6">🌙</div>
-        <div class="corner-deco top-left hidden sm:block">🕌</div>
-        <div class="corner-deco top-right hidden sm:block">🌙</div>
-        <div class="corner-deco bottom-left hidden sm:block">🏮</div>
-        <div class="corner-deco bottom-right hidden sm:block">⭐</div>
+        <div class="w-full flex justify-center">
+            <!-- ALL your screens here -->
+            <div id="startScreen" class="game-screen w-full max-w-lg sm:max-w-xl p-5 sm:p-10">
 
-        <h1 class="text-sm sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
-            ✨ EID MUBARAK ✨
-        </h1>
+                <div class="text-3xl sm:text-4xl md:text-5xl float mb-6">🌙</div>
+                <div class="corner-deco top-left hidden sm:block">🕌</div>
+                <div class="corner-deco top-right hidden sm:block">🌙</div>
+                <div class="corner-deco bottom-left hidden sm:block">🏮</div>
+                <div class="corner-deco bottom-right hidden sm:block">⭐</div>
 
-        <div class="pixel-divider hidden sm:block md:block lg:block xl:block 2xl:block">
-            ================
+                <h1 class="text-sm sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
+                    ✨ EID MUBARAK ✨
+                </h1>
+
+                <div class="pixel-divider hidden sm:block md:block lg:block xl:block 2xl:block">
+                    ================
+                </div>
+
+                <p class="mt-6 text-xs sm:text-sm">
+                    Taqabbalallahu minna wa minkum
+                </p>
+
+                <button id="startBtn" class="pixel-btn mt-10 text-xs sm:text-sm">
+                    <span class="start-text">PRESS START</span>
+                </button>
+
+            </div>
+
+
+            <div id="eidScreen" class="game-screen w-full hidden max-w-lg sm:max-w-xl p-5 sm:p-10">
+
+                <h1 class="text-sm sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
+                    ✨ EID MUBARAK ✨
+                </h1>
+
+                <!-- Dynamic message -->
+                <p id="eidMessage" class="mt-4 text-xs sm:text-sm leading-relaxed">
+                    May your Eid be filled with happiness,
+                    peace and blessings.
+                </p>
+
+                <!-- Optional image -->
+                <div id="eidImage" class="mt-6 text-4xl">
+                    🌙
+                </div>
+
+                <!-- Reroll button -->
+                <button id="rerollBtn" class="pixel-btn mt-8 text-xs sm:text-sm">
+                    REROLL
+                </button>
+
+            </div>
+
+            <!-- About Us -->
+
+            <div id="aboutScreen" class="game-screen hidden w-full max-w-lg sm:max-w-xl p-5 sm:p-10">
+
+                <h1 class="text-xl mb-6 pixel-3d">ABOUT</h1>
+
+                <p class="text-xs sm:text-sm leading-relaxed">
+                    This is a small Eid Mubarak interactive website 🎉<br><br>
+                    Built with HTML, Tailwind CSS and a bit of JavaScript.<br><br>
+                    May your Eid be filled with joy and blessings ✨
+                </p>
+
+                <button id="backBtn" class="pixel-btn mt-8 text-xs">
+                    ← BACK
+                </button>
+
+            </div>
         </div>
-
-        <p class="mt-6 text-xs sm:text-sm">
-            Taqabbalallahu minna wa minkum
-        </p>
-
-        <button id="startBtn" class="pixel-btn mt-10 text-xs sm:text-sm">
-            <span class="start-text">PRESS START</span>
-        </button>
-
     </div>
 
-
-    <div id="eidScreen" class="game-screen hidden w-full max-w-md sm:max-w-lg md:max-w-xl">
-
-        <h1 class="text-sm sm:text-2xl md:text-2xl mb-6 pixel-3d title-glow">
-            ✨ EID MUBARAK ✨
-        </h1>
-
-        <!-- Dynamic message -->
-        <p id="eidMessage" class="mt-4 text-xs sm:text-sm leading-relaxed">
-            May your Eid be filled with happiness,
-            peace and blessings.
-        </p>
-
-        <!-- Optional image -->
-        <div id="eidImage" class="mt-6 text-4xl">
-            🌙
-        </div>
-
-        <!-- Reroll button -->
-        <button id="rerollBtn" class="pixel-btn mt-8 text-xs sm:text-sm">
-            REROLL
-        </button>
-
-    </div>
-
-    <!-- About Us -->
-
-    <div id="aboutScreen" class="game-screen hidden w-full max-w-md sm:max-w-lg md:max-w-xl">
-
-        <h1 class="text-xl mb-6 pixel-3d">ABOUT</h1>
-
-        <p class="text-xs sm:text-sm leading-relaxed">
-            This is a small Eid Mubarak interactive website 🎉<br><br>
-            Built with HTML, Tailwind CSS and a bit of JavaScript.<br><br>
-            May your Eid be filled with joy and blessings ✨
-        </p>
-
-        <button id="backBtn" class="pixel-btn mt-8 text-xs">
-            ← BACK
-        </button>
-
-    </div>
-
-    <div class="music-player flex flex-wrap justify-center items-center gap-2 text-center">
+    <div class="music-player flex items-center justify-center gap-2 text-center max-w-[90vw]">
         <span class="hidden sm:inline">♪ Eid Theme</span>
         <span class="sm:hidden">♪ Eid</span>
         <button id="musicToggle">UNMUTE</button>
