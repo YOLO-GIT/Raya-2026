@@ -187,9 +187,6 @@
   .start {
     inset-inline-start: var(--spacing);
   }
-  .mx-auto {
-    margin-inline: auto;
-  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -205,9 +202,6 @@
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
-  .block {
-    display: block;
-  }
   .flex {
     display: flex;
   }
@@ -220,9 +214,6 @@
   .min-h-screen {
     min-height: 100vh;
   }
-  .w-36 {
-    width: calc(var(--spacing) * 36);
-  }
   .w-full {
     width: 100%;
   }
@@ -231,42 +222,6 @@
   }
   .border-collapse {
     border-collapse: collapse;
-  }
-  .scale-0 {
-    --tw-scale-x: 0%;
-    --tw-scale-y: 0%;
-    --tw-scale-z: 0%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-110 {
-    --tw-scale-x: 110%;
-    --tw-scale-y: 110%;
-    --tw-scale-z: 110%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-130 {
-    --tw-scale-x: 130%;
-    --tw-scale-y: 130%;
-    --tw-scale-z: 130%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-150 {
-    --tw-scale-x: 150%;
-    --tw-scale-y: 150%;
-    --tw-scale-z: 150%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-310 {
-    --tw-scale-x: 310%;
-    --tw-scale-y: 310%;
-    --tw-scale-z: 310%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-1100 {
-    --tw-scale-x: 1100%;
-    --tw-scale-y: 1100%;
-    --tw-scale-z: 1100%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -286,6 +241,9 @@
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -303,6 +261,10 @@
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-xl {
     font-size: var(--text-xl);
@@ -338,10 +300,6 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
-  .duration-500 {
-    --tw-duration: 500ms;
-    transition-duration: 500ms;
-  }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
@@ -363,6 +321,11 @@
   .sm\:inline {
     @media (width >= 40rem) {
       display: inline;
+    }
+  }
+  .sm\:min-h-screen {
+    @media (width >= 40rem) {
+      min-height: 100vh;
     }
   }
   .sm\:max-w-lg {
@@ -409,6 +372,15 @@
 @layer components {
   body {
     background: radial-gradient(circle at center, #1e293b 0%, #020617 50%, #000000 100%);
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  .background-animate {
+    background-size: 400%;
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
   }
   .stars {
     position: fixed;
@@ -921,21 +893,6 @@
     color: black;
   }
 }
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
 @property --tw-rotate-x {
   syntax: "*";
   inherits: false;
@@ -1059,10 +1016,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-duration {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-ease {
   syntax: "*";
   inherits: false;
@@ -1070,9 +1023,6 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
       --tw-rotate-x: initial;
       --tw-rotate-y: initial;
       --tw-rotate-z: initial;
@@ -1103,7 +1053,6 @@
       --tw-backdrop-opacity: initial;
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
-      --tw-duration: initial;
       --tw-ease: initial;
     }
   }
