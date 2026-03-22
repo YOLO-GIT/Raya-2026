@@ -2,9 +2,6 @@
 
 @layer components {
 
-    /* * {
-        outline: 1px solid red;
-    } */
 
     html,
     body {
@@ -18,19 +15,6 @@
                 #020617 50%,
                 #000000 100%);
     }
-
-    /* Hide scrollbar but keep functionality */
-    /* body::-webkit-scrollbar {
-        display: none;
-    }
-
-    .background-animate {
-        background-size: 400%;
-
-        -webkit-animation: AnimationName 5s ease infinite;
-        -moz-animation: AnimationName 5s ease infinite;
-        animation: AnimationName 5s ease infinite;
-    } */
 
     /* ⭐ STAR CONTAINER */
 
@@ -123,14 +107,30 @@
 
     /* game screen */
 
+    .game-screen::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+    }
+
     .game-screen {
-        border: 6px solid white;
-        padding: 40px;
+        padding: 0;
         text-align: center;
         margin-bottom: 40px;
-
-        background: rgba(0, 0, 0, 0.75);
+        justify-content: space-between;
         backdrop-filter: blur(2px);
+
+        /* 🔥 3D pixel effect */
+        background: rgba(0, 0, 0, 0.85);
+
+        border: 4px solid #fff;
+
+        box-shadow:
+            inset 0 0 10px rgba(255, 255, 255, 0.1),
+            4px 4px 0 #888,
+            8px 8px 0 #333;
 
         transition: opacity 0.5s ease;
         opacity: 1;
