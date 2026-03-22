@@ -20,7 +20,7 @@
     }
 
     /* Hide scrollbar but keep functionality */
-    body::-webkit-scrollbar {
+    /* body::-webkit-scrollbar {
         display: none;
     }
 
@@ -30,7 +30,7 @@
         -webkit-animation: AnimationName 5s ease infinite;
         -moz-animation: AnimationName 5s ease infinite;
         animation: AnimationName 5s ease infinite;
-    }
+    } */
 
     /* ⭐ STAR CONTAINER */
 
