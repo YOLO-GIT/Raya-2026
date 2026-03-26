@@ -26,13 +26,31 @@
 
     <!-- Menu button -->
     <button id="menuBtn" class="menu-btn">
-        ☰
+        <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"></path>
+        </svg>
     </button>
 
     <!-- Menu panel -->
     <div id="menuPanel" class="menu-panel hidden">
-        <button id="homeBtn">🏠 HOME</button>
-        <button id="aboutBtn">ℹ️ ABOUT</button>
+
+        <button id="homeBtn" class="menu-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 12l9-9 9 9M4.5 10.5V21h6v-6h3v6h6V10.5" />
+            </svg>
+            <span>HOME</span>
+        </button>
+
+        <button id="aboutBtn" class="menu-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 9h.01M11 12h1v4h1M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </svg>
+            <span>ABOUT</span>
+        </button>
+
     </div>
 
     <div class="particles">

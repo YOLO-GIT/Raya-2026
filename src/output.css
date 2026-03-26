@@ -834,16 +834,24 @@
     position: fixed;
     top: 15px;
     right: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: black;
     border: 3px solid white;
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 6px;
+    color: white;
     cursor: pointer;
-    z-index: 30;
+    z-index: 999;
   }
   .menu-btn:hover {
     background: white;
     color: black;
+  }
+  .menu-btn:active {
+    transform: scale(0.9);
   }
   .menu-panel {
     position: fixed;
@@ -868,6 +876,31 @@
   .menu-panel button:hover {
     background: white;
     color: black;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: black;
+    border: 2px solid white;
+    padding: 6px 10px;
+    font-size: 10px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #555;
+  }
+  .menu-item:hover {
+    background: white;
+    color: black;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .menu-item:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
   }
 }
 @property --tw-leading {
