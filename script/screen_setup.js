@@ -1,6 +1,8 @@
 const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
 const eidScreen = document.getElementById("eidScreen");
+const galleryScreen = document.getElementById("galleryScreen");
+const backFromGallery = document.getElementById("backFromGallery");
 const flash = document.getElementById("flash");
 
 startBtn.addEventListener("click", () => {

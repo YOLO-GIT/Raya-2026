@@ -5,6 +5,9 @@ const homeBtn = document.getElementById("homeBtn");
 const aboutBtn = document.getElementById("aboutBtn");
 const backBtn = document.getElementById("backBtn");
 
+const galleryBtn = document.getElementById("galleryBtn");
+
+
 /* IMPORTANT: define once */
 // const startScreen = document.getElementById("startScreen");
 // const eidScreen = document.getElementById("eidScreen");
@@ -40,6 +43,21 @@ backBtn.addEventListener("click", () => {
 
     aboutScreen.classList.add("hidden");
     startScreen.classList.remove("hidden");
+});
+
+/* go GALLERY */
+galleryBtn.addEventListener("click", () => {
+    startScreen.style.display = "none";
+    eidScreen.classList.add("hidden");
+    aboutScreen.classList.add("hidden");
+
+    galleryScreen.classList.remove("hidden");
+});
+
+/* back from gallery */
+backFromGallery.addEventListener("click", () => {
+    galleryScreen.classList.add("hidden");
+    startScreen.style.display = "block";
 });
 
 /* click outside to close menu */

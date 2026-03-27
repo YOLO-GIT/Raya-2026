@@ -1,7 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
 
 @layer components {
 
+    /* Global styles */
 
     html,
     body {
@@ -799,5 +804,23 @@
     .menu-item:active {
         transform: translate(2px, 2px);
         box-shadow: none;
+    }
+
+    .gallery {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .gallery-img {
+        flex: 0 0 auto;
+        width: 100px;
+        height: 100px;
+
+        border: 3px solid white;
+        object-fit: cover;
+
+        scroll-snap-align: center;
     }
 }
